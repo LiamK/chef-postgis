@@ -54,13 +54,8 @@ apt_repository 'ppa_ubuntugis_ubuntugis-unstable' do
 end
 
 package 'python-software-properties'
-
-# Debian has different package name...
-if node['lsb']['codename'] == 'ubuntu'
-  package 'postgresql-9.1-postgis2'
-elsif node['lsb']['codename'] == 'ubuntu'
-  package 'postgresql-9.1-postgis'
-end
+package 'postgresql-9.1-postgis2'
+package 'postgresql-9.1-postgis-2.0-scripts'
 
 include_recipe 'postgresql::server'
 
