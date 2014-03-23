@@ -74,8 +74,8 @@ apt_repository "ubuntugis-stable" do
 end
 
 package 'python-software-properties'
-package 'postgresql-9.1-postgis2'
-package 'postgresql-9.1-postgis-2.0-scripts'
+package 'postgresql-9.1-postgis-2.1'
+#package 'postgresql-9.1-postgis-2.0-scripts'
 
 include_recipe 'postgresql::server'
 
