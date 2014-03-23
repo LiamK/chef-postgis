@@ -25,36 +25,37 @@ Note: this includes the postgresql::server after installing the postgis binaries
 # behind a firewall.
 include_recipe 'postgis::_add_keys'
 
-apt_repository 'ppa_sharpie_for-science' do
-  uri 'http://ppa.launchpad.net/sharpie/for-science/ubuntu'
-  distribution node['lsb']['codename']
-  components ["main"]
-  keyserver 'keyserver.ubuntu.com'
-  key 'DAF764E2'
-  deb_src true
-end
+#apt_repository 'ppa_sharpie_for-science' do
+#  uri 'http://ppa.launchpad.net/sharpie/for-science/ubuntu'
+#  distribution node['lsb']['codename']
+#  components ["main"]
+#  keyserver 'keyserver.ubuntu.com'
+#  key 'DAF764E2'
+#  deb_src true
+#end
+#
+#apt_repository 'ppa_sharpie_postgis-stable' do
+#  uri 'http://ppa.launchpad.net/sharpie/postgis-stable/ubuntu'
+#  distribution node['lsb']['codename']
+#  components ['main']
+#  keyserver 'keyserver.ubuntu.com'
+#  key 'DAF764E2'
+#  deb_src true
+#end
+#
+#apt_repository 'ppa_ubuntugis_ubuntugis-unstable' do
+#  uri 'http://ppa.launchpad.net/ubuntugis/ubuntugis-unstable/ubuntu'
+#  distribution node['lsb']['codename']
+#  components ['main']
+#  keyserver 'keyserver.ubuntu.com'
+#  key '314DF160'
+#  deb_src true
+#  cache_rebuild true
+#end
 
-apt_repository 'ppa_sharpie_postgis-stable' do
-  uri 'http://ppa.launchpad.net/sharpie/postgis-stable/ubuntu'
-  distribution node['lsb']['codename']
-  components ['main']
-  keyserver 'keyserver.ubuntu.com'
-  key 'DAF764E2'
-  deb_src true
-end
-
-# Add this to pull in libgdal1
-apt_repository "ubuntugis-stable" do
-  uri          "http://ppa.launchpad.net/ubuntugis/ppa/ubuntu"
-  distribution node['lsb']['codename']
-  components   ["main"]
-  key          "314DF160"
-  keyserver    "keyserver.ubuntu.com"
-  action :add
-end
-
-apt_repository 'ppa_ubuntugis_ubuntugis-unstable' do
-  uri 'http://ppa.launchpad.net/ubuntugis/ubuntugis-unstable/ubuntu'
+# Note -- only for ubutu precise
+apt_repository 'ppa_lwarx_postgis' do
+  uri 'http://ppa.launchpad.net/lwarx/postgis-pg93-bp/ubuntu'
   distribution node['lsb']['codename']
   components ['main']
   keyserver 'keyserver.ubuntu.com'
@@ -63,19 +64,8 @@ apt_repository 'ppa_ubuntugis_ubuntugis-unstable' do
   cache_rebuild true
 end
 
-# Add this to pull in libgdal1
-apt_repository "ubuntugis-stable" do
-  uri          "http://ppa.launchpad.net/ubuntugis/ppa/ubuntu"
-  distribution node['lsb']['codename']
-  components   ["main"]
-  key          "314DF160"
-  keyserver    "keyserver.ubuntu.com"
-  action :add
-end
-
 package 'python-software-properties'
 package 'postgresql-9.1-postgis-2.1'
-#package 'postgresql-9.1-postgis-2.0-scripts'
 
 include_recipe 'postgresql::server'
 
