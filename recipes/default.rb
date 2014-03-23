@@ -43,6 +43,16 @@ apt_repository 'ppa_sharpie_postgis-stable' do
   deb_src true
 end
 
+# Add this to pull in libgdal1
+apt_repository "ubuntugis-stable" do
+  uri          "http://ppa.launchpad.net/ubuntugis/ppa/ubuntu"
+  distribution node['lsb']['codename']
+  components   ["main"]
+  key          "314DF160"
+  keyserver    "keyserver.ubuntu.com"
+  action :add
+end
+
 apt_repository 'ppa_ubuntugis_ubuntugis-unstable' do
   uri 'http://ppa.launchpad.net/ubuntugis/ubuntugis-unstable/ubuntu'
   distribution node['lsb']['codename']
@@ -51,6 +61,16 @@ apt_repository 'ppa_ubuntugis_ubuntugis-unstable' do
   key '314DF160'
   deb_src true
   cache_rebuild true
+end
+
+# Add this to pull in libgdal1
+apt_repository "ubuntugis-stable" do
+  uri          "http://ppa.launchpad.net/ubuntugis/ppa/ubuntu"
+  distribution node['lsb']['codename']
+  components   ["main"]
+  key          "314DF160"
+  keyserver    "keyserver.ubuntu.com"
+  action :add
 end
 
 package 'python-software-properties'
