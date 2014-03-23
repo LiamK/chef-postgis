@@ -59,13 +59,13 @@ apt_repository 'ppa_lwarx_postgis' do
   distribution node['lsb']['codename']
   components ['main']
   keyserver 'keyserver.ubuntu.com'
-  key '314DF160'
+  key '949452CB'
   deb_src true
   cache_rebuild true
 end
 
 package 'python-software-properties'
-package 'postgresql-9.1-postgis-2.1'
+package 'postgresql-9.3-postgis-2.1'
 
 include_recipe 'postgresql::server'
 
